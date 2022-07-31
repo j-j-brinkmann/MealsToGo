@@ -1,5 +1,6 @@
 import React from "react";
 import { Text } from "react-native";
+import styled from "styled-components/native";
 import { Avatar, Button, Card, Title, Paragraph } from "react-native-paper";
 
 export const RestaurantInfo = ({ restaurant = {} }) => {
@@ -15,17 +16,27 @@ export const RestaurantInfo = ({ restaurant = {} }) => {
     isClosedTemporarily,
   } = restaurant;
 
+  const RestaurantCard = styled(Card)`
+    background-color: ${(props) => props.theme.colors.bg.primary};
+  `;
+
+  const CardCover = styled(Card.Cover)`
+    padding: ${(props) => props.theme.space[3]};
+    background-color: ${(props) => props.theme.colors.ui.quaternary};
+  `;
+
+  const RestaurantName = styled(Text)`
+    font-family: ${(props) => props.theme.fonts.body};
+    padding: ${(props) => props.theme.space[3]};
+    color: ${(props) => props.theme.colors.ui.primary};
+  `;
+
   return (
     <>
-      <Card elevation={3}>
-        <Card.Cover
-          style={{ padding: 20, backgroundColor: "white" }}
-          source={{ uri: photos[0] }}
-        />
-        <Card.Content>
-          <Title>{name}</Title>
-        </Card.Content>
-      </Card>
+      <RestaurantCard elevation={3}>
+        <CardCover key={name} source={{ uri: photos[0] }} />
+        <RestaurantName>{name}</RestaurantName>
+      </RestaurantCard>
     </>
   );
 };
