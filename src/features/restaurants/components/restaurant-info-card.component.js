@@ -1,9 +1,20 @@
 import React from "react";
-import { Text, View, Image } from "react-native";
+import { View, Image } from "react-native";
 import styled from "styled-components/native";
-import { Card } from "react-native-paper";
 import IconFoundation from "react-native-vector-icons/Foundation";
 import { Spacer } from "../../../components/spacer/spacer.component";
+import { Text } from "../../../components/typography/text.component";
+import {
+  RestaurantCard,
+  CardCover,
+  InfoView,
+  RestaurantName,
+  Address,
+  Rating,
+  Section,
+  SectionEnd,
+  Icon,
+} from "./restaurant-info-card.styles";
 
 export const RestaurantInfo = ({ restaurant = {} }) => {
   const {
@@ -15,47 +26,8 @@ export const RestaurantInfo = ({ restaurant = {} }) => {
     address = "Random Street 2",
     isOpenNow = true,
     rating = 3,
-    isClosedTemporarily = false,
+    isClosedTemporarily = true,
   } = restaurant;
-
-  const RestaurantCard = styled(Card)`
-    background-color: ${(props) => props.theme.colors.bg.primary};
-  `;
-
-  const CardCover = styled(Card.Cover)`
-    padding: ${(props) => props.theme.space[3]};
-    background-color: ${(props) => props.theme.colors.ui.quaternary};
-  `;
-
-  const InfoView = styled(View)`
-    padding: ${(props) => props.theme.space[3]};
-  `;
-
-  const RestaurantName = styled(Text)`
-    font-family: ${(props) => props.theme.fonts.heading};
-    font-size: ${(props) => props.theme.fontSizes.title};
-    color: ${(props) => props.theme.colors.ui.primary};
-  `;
-
-  const Address = styled(Text)`
-    font-family: ${(props) => props.theme.fonts.body};
-    font-size: ${(props) => props.theme.fontSizes.caption};
-  `;
-
-  const Rating = styled(View)`
-    flex-direction: row;
-    padding-top: ${(props) => props.theme.space[1]}
-    padding-bottom: ${(props) => props.theme.space[1]}
-  `;
-  const Section = styled(View)`
-    flex-direction: row;
-    align-items: center;
-  `;
-  const SectionEnd = styled(View)`
-    flex: 1  
-    flex-direction: row;
-    justify-content: flex-end;
-  `;
 
   const ratingArray = Array.from(new Array(Math.floor(rating)));
 
@@ -72,17 +44,12 @@ export const RestaurantInfo = ({ restaurant = {} }) => {
               ))}
               <SectionEnd>
                 {isClosedTemporarily && (
-                  <Text variant="label" style={{ color: "red" }}>
-                    Closed Temporarily
-                  </Text>
+                  <Text variant="error">Closed Temporarily</Text>
                 )}
                 <View style={{ paddingLeft: 16 }} />
                 {isOpenNow && <IconFoundation name="burst-sale" size={32} />}
                 <View style={{ paddingLeft: 16 }} />
-                <Image
-                  style={{ width: 15, height: 15 }}
-                  source={{ uri: icon }}
-                />
+                <Icon source={{ uri: icon }} />
               </SectionEnd>
             </Rating>
           </Section>
