@@ -7,6 +7,7 @@ import {
   Oswald_400Regular,
 } from "@expo-google-fonts/oswald";
 import { useFonts as useLato, Lato_400Regular } from "@expo-google-fonts/lato";
+import Icon from "react-native-vector-icons/FontAwesome";
 
 export default function App() {
   const [oswaldLoaded] = useOswald({
