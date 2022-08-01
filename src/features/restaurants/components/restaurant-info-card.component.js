@@ -3,6 +3,7 @@ import { Text, View, Image } from "react-native";
 import styled from "styled-components/native";
 import { Card } from "react-native-paper";
 import IconFoundation from "react-native-vector-icons/Foundation";
+import { Spacer } from "../../../components/spacer/spacer.component";
 
 export const RestaurantInfo = ({ restaurant = {} }) => {
   const {
