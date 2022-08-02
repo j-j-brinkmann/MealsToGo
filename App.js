@@ -13,6 +13,8 @@ import { useFonts as useLato, Lato_400Regular } from "@expo-google-fonts/lato";
 import Icon from "react-native-vector-icons/FontAwesome";
 import { Ionicons } from "@expo/vector-icons";
 
+import { restaurantRequest } from "./src/services/restaurants/mock/restaurants.service";
+
 function SettingsScreen() {
   return (
     <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
